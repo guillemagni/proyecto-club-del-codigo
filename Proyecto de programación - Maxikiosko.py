@@ -282,6 +282,99 @@ def buscar_codigo():
         
     return encontrado
 
+'''Seccion de venta'''
+def menu_venta():
+    os.system('cls')
+    op = None
+    while op != 3:
+        print('### Menú de venta ###')
+        print('-'*20)
+        print('1. Registrar venta')
+        print('2. Mostrar total recaudado')
+        print('3. Volver al menú principal')
+        print('-'*20)
+        op = int(input('Ingrese una opción: '))
+        while op < 1 and op > 3:
+            print()
+            print('ERROR! -> Se cargo un valor que no es válido!')
+            op = int(input('Cargue una opción(entre 1 y 2): '))
+        
+        #Control de opción y ejecución
+        if op == 1:
+            pass
+        elif op == 2:
+            pass
+        elif op == 3:
+            menu_general()
+        elif op == 4:
+            pass
+        elif op == 5:
+            pass
+        
+def registrar_venta():
+    os.system('cls')
+    op = None
+    while op != 3:
+        print('### Registrar venta ###')
+        print('-'*20)
+        print('1. Registrar venta')
+        print('2. Buscar un producto')
+        print('3. Volver al menú anterior')
+        print('-'*20)
+        op = int(input('Ingrese una opción: ')
+        while op < 1 and op > 3:
+            print()
+            print('ERROR! -> Se cargo un valor que no es válido!')
+            op = int(input('Cargue una opción(entre 1 y 2): '))
+        
+        if op == 1:
+            venta_terminada = False
+            carga = True
+            saldo = 0
+            descripcion_venta = '### Productos vendidos:\n'
+            while carga != False:
+                 producto = int(input('Ingrese el código del producto que desea sumar a la venta: ')
+                 print(f'Producto: {productos[producto][0]} - Precio: ${productos[producto][1]} - Stock: {productos[producto][2]}
+                 cantidad = int(input('Ingrese la cantidad a vender: ')
+                 while cantidad > productos[producto][2]:
+                       print('ERROR! -> No puede ingresar una cantidad mayor al stock!')
+                       cantidad = int(input(f'Ingrese la cantidad a vender (un valor menor a {productos[producto][2]} : ')
+                 saldo += productos[producto][1] * cantidad #Acumulamos el costo por los productos
+                 descripcion_venta = descripcion_venta + productos[producto][0] + ' - Cantidad: ' + str(cantidad) +'\n' #Armamos una descripcióin de la venta
+                 productos[producto][2] = productos[producto][2] - cantidad #actualizamos el stock del producto
+                 print()
+                 print('¡Producto cargado a la venta!')
+                 r = input('¿Desea cargar otro producto a la venta? [s/n]: ')
+                 while r != 's' and r != 'n':
+                    print()
+                    print('ERROR! -> Se cargo un valor que no es válido!')
+                    op = input('Cargue una opción(entre "s" o "n"): ')
+                 if r == 'n':
+                    carga = False
+            #Registramos la venta                          
+            nueva_venta = [descripcion_venta, saldo]
+            ventas.append(nueva_venta)
+         print()
+         print('!Venta registrada!')
+         input('Presione enter para volver a la pantalla anterior')
+         menu_venta()
+                 
+def mostrar_total_recaudado():
+    os.system('cls')
+    recaudado = 0
+    for i in range(len(ventas)): recaudado += ventas[i][1]
+    print(f'El total recaudado por ventas hasta el momento es de: ${recaudado}')
+    print()
+    input('Presione enter para volver a la pantalla anterior')
+    menu_venta()               
+
+def mostrar_ventas_realizadas():
+    os.system('cls')
+    print('### Ventas realizadas hasta el momento')                                      
+    for i in range(len(ventas)):
+        print(f'')                                        
+    
+
     
 
         
